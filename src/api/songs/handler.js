@@ -1,6 +1,7 @@
 const { connect } = require('http2');
 const prisma = require('../../services/prisma');
 const songSchema = require('../../validators/songsValid');
+const albums = require('../albums');
 
 const addSong = async ( request, h ) => {
     const { error, value } = songSchema.validate(request.payload);

@@ -34,5 +34,5 @@ exports.up = (pgm) => {
  */
 exports.down = (pgm) => {
     pgm.dropTable('songs');
-    pgm.dropTable('album');
+    pgm.dropTable('albums');
 };
