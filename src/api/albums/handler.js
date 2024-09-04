@@ -3,32 +3,60 @@ const prisma = require('../../services/prisma');
 const albumSchema = require('../../validators/albumsValid')
 
 const addAlbum = async (request, h) => {
-    const { error, value } = albumSchema.validate(request, payload);
+    const { error, value } = albumSchema.validate(request.payload);
     if (error) {
+        // Respond with a detailed validation error message
         return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
-    const { name, year } = value;
-    const newAlbum = await prisma.album.create({
-        data: {name, year },
+    try {
+        const { name, year } = value;
+
+        // Create new album in the database
+        const newAlbum = await prisma.album.create({
+            data: { name, year },
+        });
+
+        return h.response({ status: 'success', data: { albumId: newAlbum.id } }).code(201);
+    } catch (err) {
+        // Log the error and provide detailed feedback
+        console.error('Error creating album:', err);
+        return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
+    }
+};
+
+const getAlbums = async ( request, h ) => {
+    const { name, year } = request.query;
+
+    const albums = await prisma.album.findMany({
+        where: {
+            AND: [
+                name ? { name: { contains: title, mode: 'insensitive'} } : {},
+                year ? { year: { contains: performer, mode: 'insensitive'} } : {},
+            ],
+        },
     });
 
-    // return response status 201 if succesfull
-    return h.response({ status: 'success', data: { albumId: newAlbum.id } }).code(201);
+    if(!albums){
+            return h.response({ status: 'fail', message: 'No albums found' }).code(404);
+    };
+
+    return h.response({ status: 'success', data: { albums } }).code(200);
 };
+
 
 const getAlbumById =  async (request, h) => {
     const { id } = request.params;
     const album = await prisma.album.findUnique({
         where: { id },
-        include: { songs: ture },
+        include: { songs: true },
     });
 
-    if (album) {
+    if (!album) {
         return h.response({ status: 'fail', message: 'Album not found '}).code(404);
     }
 
-    return h.response({ status: 'fail', message: 'Album not found '}).code(200);
+    return h.response({ status: 'success', data: {album}}).code(200);
 };
 
 const updateAlbumById = async (request, h) => {
@@ -56,5 +84,9 @@ const deleteAlbumById = async (request, h) => {
     return h.response({ status: 'success', message: 'Album deleted' }).code(200);
 };
 
-module.exports = { addAlbum, getAlbumById, updateAlbumById, deleteAlbumById };
+(async () => {
+    const { nanoid } = await import('nanoid');
+})();
+
+module.exports = { addAlbum, getAlbumById, updateAlbumById, deleteAlbumById, getAlbums };
 

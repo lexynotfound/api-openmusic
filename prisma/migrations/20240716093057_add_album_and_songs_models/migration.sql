@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "album" (
+CREATE TABLE "albums" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "year" INTEGER NOT NULL,
@@ -21,4 +21,4 @@ CREATE TABLE "songs" (
 );
 
 -- AddForeignKey
-ALTER TABLE "songs" ADD CONSTRAINT "songs_albumId_fkey" FOREIGN KEY ("albumId") REFERENCES "album"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "songs" ADD CONSTRAINT "songs_albumId_fkey" FOREIGN KEY ("albumId") REFERENCES "albums"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -10,19 +10,19 @@ exports.shorthands = undefined;
  */
 exports.up = (pgm) => {
     pgm.createTable('albums', {
-        id: {type: 'uuid', primaryKey: true, default: pgm.func('uuid_generate_v4()')},
+        id: {type: 'uuid', primaryKey: true},
         name: { type: 'varchar(1000)', notNull: true},
         year: { type: 'integer', notNull: true },
     });
 
     pgm.createTable('songs', {
-        id: { type: 'uuid', primaryKey: true, default: pgm.func('uuid_generate_v4()')},
+        id: { type: 'uuid', primaryKey: true },
         title: { type: 'varchar(1000)', notNull: true},
         performer: { type: 'varchar(1000)', notNull: true},
         year: { type: 'integer'},
         genre: { type: 'varchar(1000)', notNull: true},
         duration: { type: 'integer' },
-        albumId: { type: 'uuid', references: '"albums"', onDelete: 'CASCADE' }
+        albumId: { type: 'uuid', references: '"albums"(id)', onDelete: 'CASCADE' }
 
     });
 };
@@ -34,5 +34,5 @@ exports.up = (pgm) => {
  */
 exports.down = (pgm) => {
     pgm.dropTable('songs');
-    pgm.dropTable('albums');
+    pgm.dropTable('album');
 };

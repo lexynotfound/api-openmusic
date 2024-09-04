@@ -1,18 +1,45 @@
+const { connect } = require('http2');
 const prisma = require('../../services/prisma');
 const songSchema = require('../../validators/songsValid');
 
 const addSong = async ( request, h ) => {
-    const { error, value } = songSchema.validate(request, payload);
+    const { error, value } = songSchema.validate(request.payload);
     if (error) {
         return h.response({ status: 'fail', message: error.details[0].message });
     };
 
-    const newSong = await prisma.songs.create({
-        data: value,
-    });
+    try {
+        const newSong = await prisma.songs.create({
+            data: {
+                title: value.title,
+                performer: value.performer,
+                genre: value.genre,
+                duration: value.duration,
+                year: value.year,
+                albums: value.albumId ? {
+                    connect: { 
+                        id: value.albumId,
+                    }, // Connect to existing album
+                } : undefined, // Alternatively handle creation or connectOrCreate here if necessary
+            },
+        });
+        // return response
+        return h.response(
+            { 
+                status: 'success', 
+                data:{
+                    songId: newSong.id, 
+                    title: newSong.title,
+                    performer: newSong.performer,
+                    genre: newSong.genre,
+                    year: newSong.year,
+                    albums: newSong.albumId
+                }}).code(200);
+    } catch (err) {
+        console.error(err);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500)
+    }
 
-    // return response
-    return h.response({ status: 'success', data:{songId: newSong.id}}).code(200);
 };
 
 const getSongs = async ( request, h ) => {
@@ -27,7 +54,7 @@ const getSongs = async ( request, h ) => {
         },
     });
 
-    if(songs.length === 0){
+    if(!songs){
             return h.response({ status: 'fail', message: 'No songs founds' }).code(404);
     };
 

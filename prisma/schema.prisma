@@ -15,27 +15,24 @@ datasource db {
 
 // Create migrate table album
 model Album {
-  id String @id @default(uuid())
-  name String 
-  year Int
+  id    String  @id @default(uuid())
+  name  String
+  year  Int
   songs Songs[]
 
-  @@map("album")
+  @@map("albums")
 }
 
 // Create migrate table songs
 model Songs {
-  id String @id @default(uuid())
-  title String
-  year Int
+  id        String @id @default(uuid())
+  title     String
+  year      Int
   performer String
-  genre String
-  duration Int
-  albumId String
-  album Album @relation(fields: [albumId], references: [id])
+  genre     String
+  duration  Int
+  albumId   String
+  albums     Album  @relation(fields: [albumId], references: [id])
 
   @@map("songs")
-  
 }
-
-
