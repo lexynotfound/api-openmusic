@@ -68,7 +68,10 @@ const updateAlbumById = async (request, h) => {
 
     await prisma.album.update({
         where: { id },
-        data: { name: value.name, year: value.year},
+        data: { 
+            name: value.name, 
+            year: value.year
+        },
     });
 
     return h.response({ status: 'success', message: 'Album Updated'}).code(200)

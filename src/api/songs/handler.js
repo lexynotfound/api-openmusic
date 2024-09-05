@@ -83,13 +83,40 @@ const updateSongById = async (request, h) => {
     }
 
     try {
-        await prisma.songs.update({
+        // Check if the song exists
+        const song = await prisma.songs.findUnique({ where: { id }});
+        if(!song){
+            return h.response({ status: 'fail', message: 'Song not found' }).code(404);
+        }
+        const updatedSong = await prisma.songs.update({
             where: { id },
-            data: value,
+            data: {
+                title: value.title,
+                performer: value.performer,
+                genre: value.genre,
+                year: value.year,
+                album: value.albumId ? {
+                    connect: { 
+                        id: value.albumId,
+                    }, // Connect to existing album
+                } : undefined,
+            },
         });
-        return h.response({ status: 'success', message: 'Song updated' }).code(200);
+        return h.response({ 
+            status: 'success', 
+            message: 'Song updated', 
+            data:{
+                songId: updatedSong.id, 
+                title: updatedSong.title,
+                performer: updatedSong.performer,
+                genre: updatedSong.genre,
+                year: updatedSong.year,
+                album: updatedSong.albumId,
+                }
+            }).code(200);
     } catch (e) {
-        return h.response({ status: 'fail', message: 'Song not found' }).code(404);
+        console.error(e)
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
     }
 };
 
