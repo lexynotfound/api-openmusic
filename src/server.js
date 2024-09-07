@@ -8,8 +8,8 @@ const init = async () => {
         port: process.env.PORT || 5000,
         host: process.env.HOST || 'localhost',
         routes: {
-            cors: true, // Enable CORS for easier debugging
-        },
+            cors: true, // Enable CORS for broader access
+        }
     });
 
     // Register plugins
@@ -46,7 +46,7 @@ const init = async () => {
         console.log(`Response: ${method.toUpperCase()} ${path} --> Status: ${statusCode}`);
     });
 
-    // Simple test route to verify server response
+    // Add a simple test route to verify server response
     server.route({
         method: 'GET',
         path: '/ping',

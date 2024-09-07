@@ -4,6 +4,8 @@ const albumSchema = require('../../validators/albumsValid');
 
 const addAlbum = async (request, h) => {
     console.log('AddAlbum Handler: Incoming request', request.payload);
+    
+    // Step 1: Validate incoming payload
     const { error, value } = albumSchema.validate(request.payload);
     if (error) {
         console.log('Validation Error:', error.details[0].message);
@@ -11,18 +13,25 @@ const addAlbum = async (request, h) => {
     }
 
     try {
+        // Step 2: Generate ID and extract validated data
         const id = `album-${nanoid()}`;
         const { name, year } = value;
-        console.log('AddAlbum Handler: Validated data', { id, name, year });
+        console.log('Validated data:', { id, name, year });
 
-        await pool.query(
-            'INSERT INTO albums (id, name, year) VALUES ($1, $2, $3)',
-            [id, name, year]
-        );
+        // Step 3: Perform database operation
+        const query = 'INSERT INTO albums (id, name, year) VALUES ($1, $2, $3)';
+        const params = [id, name, year];
+        console.log('Executing query:', query, params);
+        
+        // Step 4: Execute query and catch database-specific errors
+        const result = await pool.query(query, params);
+        console.log('Database response:', result);
 
+        // Step 5: Return success response
         return h.response({ status: 'success', data: { albumId: id } }).code(201);
     } catch (err) {
-        console.error('Error creating album:', err);
+        // Step 6: Log detailed error information if query fails
+        console.error('Error creating album:', err.message, err.stack);
         return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
     }
 };
