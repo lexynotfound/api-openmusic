@@ -2,17 +2,19 @@ const pool = require('../../services/db');
 const { nanoid } = require('nanoid');
 const albumSchema = require('../../validators/albumsValid');
 
-
 const addAlbum = async (request, h) => {
+    console.log('AddAlbum Handler: Incoming request', request.payload);
     const { error, value } = albumSchema.validate(request.payload);
     if (error) {
+        console.log('Validation Error:', error.details[0].message);
         return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
     try {
         const id = `album-${nanoid()}`;
         const { name, year } = value;
-        
+        console.log('AddAlbum Handler: Validated data', { id, name, year });
+
         await pool.query(
             'INSERT INTO albums (id, name, year) VALUES ($1, $2, $3)',
             [id, name, year]

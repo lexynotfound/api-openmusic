@@ -3,14 +3,17 @@ const { nanoid } = require('nanoid');
 const songSchema = require('../../validators/songsValid');
 
 const addSong = async (request, h) => {
+    console.log('AddSong Handler: Incoming request', request.payload);
     const { error, value } = songSchema.validate(request.payload);
     if (error) {
+        console.log('Validation Error:', error.details[0].message);
         return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
     try {
         const id = `song-${nanoid()}`;
         const { title, year, performer, genre, duration, albumId } = value;
+        console.log('AddSong Handler: Validated data', { id, title, year, performer, genre, duration, albumId });
 
         await pool.query(
             'INSERT INTO songs (id, title, year, performer, genre, duration, album_id) VALUES ($1, $2, $3, $4, $5, $6, $7)',
