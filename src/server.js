@@ -1,27 +1,29 @@
+// server.js
 const Hapi = require('@hapi/hapi');
-const albumsPlugin = require('./api/albums/index');
-const songsPlugin = require('./api/songs/index');
+const albumsRoutes = require('./api/albums/routes');
+const songsRoutes = require('./api/songs/routes');
 require('dotenv').config();
 
-const init = async() => {
-    const server = Hapi.server({
-        port: process.env.PORT || 5000,
-        host: process.env.HOST || 'localhost'
-    });
+const init = async () => {
+    try {
+        const server = Hapi.server({
+            port: process.env.PORT || 5000,
+            host: process.env.HOST || 'localhost',
+        });
 
-    // register plugin
-    // await server.register([albumsPlugin, songsPlugin]);
-    await server.register(albumsPlugin);
-    await server.register(songsPlugin);
+        // Directly register routes
+        server.route([...albumsRoutes, ...songsRoutes]);
 
-    await server.start();
-
-    await server.start();
-    console.log(`server running on ${server.info.uri}`);
+        await server.start();
+        console.log(`Server running on ${server.info.uri}`);
+    } catch (err) {
+        console.error('Error starting server:', err);
+        process.exit(1);
+    }
 };
 
-process.on('unhandleRejection', (err) => {
-    console.log(err);
+process.on('unhandledRejection', (err) => {
+    console.error('Unhandled rejection:', err);
     process.exit(1);
 });
 

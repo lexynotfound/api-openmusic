@@ -1,62 +1,71 @@
-const { request } = require('http');
-const prisma = require('../../services/prisma');
-const albumSchema = require('../../validators/albumsValid')
+const pool = require('../../services/db');
+const { nanoid } = require('nanoid');
+const albumSchema = require('../../validators/albumsValid');
+
 
 const addAlbum = async (request, h) => {
     const { error, value } = albumSchema.validate(request.payload);
     if (error) {
-        // Respond with a detailed validation error message
         return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
     try {
+        const id = `album-${nanoid()}`;
         const { name, year } = value;
+        
+        await pool.query(
+            'INSERT INTO albums (id, name, year) VALUES ($1, $2, $3)',
+            [id, name, year]
+        );
 
-        // Create new album in the database
-        const newAlbum = await prisma.album.create({
-            data: { name, year },
-        });
-
-        return h.response({ status: 'success', data: { albumId: newAlbum.id } }).code(201);
+        return h.response({ status: 'success', data: { albumId: id } }).code(201);
     } catch (err) {
-        // Log the error and provide detailed feedback
         console.error('Error creating album:', err);
-        return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
     }
 };
 
-const getAlbums = async ( request, h ) => {
+const getAlbums = async (request, h) => {
     const { name, year } = request.query;
 
-    const albums = await prisma.album.findMany({
-        where: {
-            AND: [
-                name ? { name: { contains: title, mode: 'insensitive'} } : {},
-                year ? { year: { contains: performer, mode: 'insensitive'} } : {},
-            ],
-        },
-    });
-
-    if(!albums){
-            return h.response({ status: 'fail', message: 'No albums found' }).code(404);
-    };
-
-    return h.response({ status: 'success', data: { albums } }).code(200);
-};
-
-
-const getAlbumById =  async (request, h) => {
-    const { id } = request.params;
-    const album = await prisma.album.findUnique({
-        where: { id },
-        include: { songs: true },
-    });
-
-    if (!album) {
-        return h.response({ status: 'fail', message: 'Album not found '}).code(404);
+    let query = 'SELECT * FROM albums WHERE 1=1';
+    const params = [];
+    
+    if (name) {
+        params.push(`%${name}%`);
+        query += ` AND name ILIKE $${params.length}`;
+    }
+    if (year) {
+        params.push(year);
+        query += ` AND year = $${params.length}`;
     }
 
-    return h.response({ status: 'success', data: {album}}).code(200);
+    try {
+        const result = await pool.query(query, params);
+        return h.response({ status: 'success', data: { albums: result.rows } }).code(200);
+    } catch (err) {
+        console.error(err);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
+    }
+};
+
+const getAlbumById = async (request, h) => {
+    const { id } = request.params;
+
+    try {
+        const albumResult = await pool.query('SELECT * FROM albums WHERE id = $1', [id]);
+        if (albumResult.rows.length === 0) {
+            return h.response({ status: 'fail', message: 'Album not found' }).code(404);
+        }
+
+        const songsResult = await pool.query('SELECT id, title, performer FROM songs WHERE album_id = $1', [id]);
+        const album = { ...albumResult.rows[0], songs: songsResult.rows };
+
+        return h.response({ status: 'success', data: { album } }).code(200);
+    } catch (err) {
+        console.error(err);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
+    }
 };
 
 const updateAlbumById = async (request, h) => {
@@ -66,30 +75,28 @@ const updateAlbumById = async (request, h) => {
         return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
-    await prisma.album.update({
-        where: { id },
-        data: { 
-            name: value.name, 
-            year: value.year
-        },
-    });
+    try {
+        await pool.query(
+            'UPDATE albums SET name = $1, year = $2 WHERE id = $3',
+            [value.name, value.year, id]
+        );
 
-    return h.response({ status: 'success', message: 'Album Updated'}).code(200)
+        return h.response({ status: 'success', message: 'Album updated' }).code(200);
+    } catch (err) {
+        console.error(err);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
+    }
 };
 
-// updated album
 const deleteAlbumById = async (request, h) => {
     const { id } = request.params;
-    await prisma.album.delete({
-        where: { id }
-    });
-    
-    return h.response({ status: 'success', message: 'Album deleted' }).code(200);
+    try {
+        await pool.query('DELETE FROM albums WHERE id = $1', [id]);
+        return h.response({ status: 'success', message: 'Album deleted' }).code(200);
+    } catch (err) {
+        console.error(err);
+        return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
+    }
 };
 
-(async () => {
-    const { nanoid } = await import('nanoid');
-})();
-
-module.exports = { addAlbum, getAlbumById, updateAlbumById, deleteAlbumById, getAlbums };
-
+module.exports = { addAlbum, getAlbums, getAlbumById, updateAlbumById, deleteAlbumById };
