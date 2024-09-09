@@ -1,12 +1,12 @@
-// services/db.js
 const { Pool } = require('pg');
 
+// Configure the connection pool using environment variables
 const pool = new Pool({
-  user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  database: process.env.DB_NAME || 'openmusic',
-  password: process.env.DB_PASSWORD || 'r',
-  port: process.env.DB_PORT || 5432,
+  user: process.env.PGUSER || 'postgres',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'openmusic',
+  password: process.env.PGPASSWORD || 'r',
+  port: process.env.PGPORT || 5432,
 });
 
 // Test connection
