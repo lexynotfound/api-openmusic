@@ -4,19 +4,24 @@ const albumSchema = require('../../validators/albumsValid');
 const albumsService = new AlbumsService(); // Proper instantiation of AlbumsService
 
 const addAlbum = async (request, h) => {
+  console.log('Received request:', request.payload);
   const { error, value } = albumSchema.validate(request.payload);
+  
   if (error) {
+    console.log('Validation error:', error);
     return h.response({ status: 'fail', message: error.details[0].message }).code(400);
   }
 
   try {
     const albumId = await albumsService.addAlbum(value);
+    console.log('Album created with ID:', albumId);
     return h.response({ status: 'success', data: { albumId } }).code(201);
   } catch (err) {
     console.error('Error creating album:', err);
     return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
   }
 };
+
 
 const getAlbums = async (request, h) => {
   try {
