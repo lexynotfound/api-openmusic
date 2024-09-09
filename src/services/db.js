@@ -1,24 +1,23 @@
+// services/db.js
 const { Pool } = require('pg');
-require('dotenv').config();
 
-let pool;
+const pool = new Pool({
+  user: process.env.DB_USER || 'postgres',
+  host: process.env.DB_HOST || 'localhost',
+  database: process.env.DB_NAME || 'openmusic',
+  password: process.env.DB_PASSWORD || 'r',
+  port: process.env.DB_PORT || 5432,
+});
 
-try {
-    pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-    });
+// Test connection
+pool.connect((err) => {
+  if (err) {
+    console.error('Failed to connect to the database:', err);
+  } else {
+    console.log('Connected to the PostgreSQL database successfully!');
+  }
+});
 
-    pool.on('connect', () => {
-        console.log('Connected to the database successfully.');
-    });
-
-    pool.on('error', (err) => {
-        console.error('Unexpected error on idle client', err);
-        process.exit(-1);
-    });
-} catch (error) {
-    console.error('Error connecting to the database:', error);
-    process.exit(1);
-}
-
-module.exports = pool;
+module.exports = {
+  query: (text, params) => pool.query(text, params),
+};
