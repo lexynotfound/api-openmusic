@@ -1,74 +1,140 @@
-// src/api/albums/handler.js
-const AlbumsService = require('../../services/AlbumsServices'); // Correct path and file name
-const albumSchema = require('../../validators/albumsValid');
-const albumsService = new AlbumsService(); // Proper instantiation of AlbumsService
+const logger = require('../../utils/logger'); // Ensure you have the correct logger module
 
-const addAlbum = async (request, h) => {
-  console.log('Received request:', request.payload);
-  const { error, value } = albumSchema.validate(request.payload);
-  
-  if (error) {
-    console.log('Validation error:', error);
-    return h.response({ status: 'fail', message: error.details[0].message }).code(400);
+class AlbumsHandler {
+  constructor(service, validator) {
+    this._service = service;
+    this._validator = validator;
+
+    this.addAlbum = this.addAlbum.bind(this);
+    this.getAlbums = this.getAlbums.bind(this);
+    this.getAlbumById = this.getAlbumById.bind(this);
+    this.updateAlbumById = this.updateAlbumById.bind(this);
+    this.deleteAlbumById = this.deleteAlbumById.bind(this);
   }
 
-  try {
-    const albumId = await albumsService.addAlbum(value);
-    console.log('Album created with ID:', albumId);
-    return h.response({ status: 'success', data: { albumId } }).code(201);
-  } catch (err) {
-    console.error('Error creating album:', err);
-    return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
-  }
-};
+  async addAlbum(request, h) {
+    logger.info('Received request to add album:', request.payload);
 
-
-const getAlbums = async (request, h) => {
-  try {
-    const albums = await albumsService.getAlbums(request.query);
-    if (albums.length === 0) {
-      return h.response({ status: 'fail', message: 'No albums found' }).code(404);
+    // Validate the request payload using the validator
+    const { error } = this._validator.validate(request.payload);
+    if (error) {
+      logger.error('Validation error:', error.details[0].message);
+      return h.response({
+        status: 'fail',
+        message: error.details[0].message,
+      }).code(400); // Return 400 Bad Request if validation fails
     }
-    return h.response({ status: 'success', data: { albums } }).code(200);
-  } catch (err) {
-    console.error('Error fetching albums:', err);
-    return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
-  }
-};
 
-const getAlbumById = async (request, h) => {
-  try {
-    const album = await albumsService.getAlbumById(request.params.id);
-    return h.response({ status: 'success', data: { album } }).code(200);
-  } catch (err) {
-    console.error('Error fetching album:', err);
-    return h.response({ status: 'fail', message: err.message }).code(404);
-  }
-};
+    try {
+      const { name, year } = request.payload;
+      logger.info(`Attempting to add album with name: ${name}, year: ${year}`);
+      const albumId = await this._service.addAlbum({ name, year });
 
-const updateAlbumById = async (request, h) => {
-  const { error, value } = albumSchema.validate(request.payload);
-  if (error) {
-    return h.response({ status: 'fail', message: error.details[0].message }).code(400);
+      logger.info(`Album created with ID: ${albumId}`);
+      return h.response({
+        status: 'success',
+        data: { albumId: albumId.id },
+      }).code(201);
+    } catch (err) {
+      logger.error('Error adding album:', err);
+      return h.response({
+        status: 'error',
+        message: 'Internal Server Error',
+        details: err.message || 'Unknown error',
+      }).code(500);
+    }
   }
 
-  try {
-    await albumsService.updateAlbumById(request.params.id, value);
-    return h.response({ status: 'success', message: 'Album updated' }).code(200);
-  } catch (err) {
-    console.error('Error updating album:', err);
-    return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
+  async getAlbums(request, h) {
+    logger.info('Received request to get albums');
+    try {
+      const queryParams = request.query;
+      logger.info('Fetching albums with query params:', queryParams);
+      const albums = await this._service.getAlbums(queryParams);
+      logger.info(`Fetched ${albums.length} albums`);
+      return h.response({
+        status: 'success',
+        data: { albums },
+      }).code(200);
+    } catch (err) {
+      logger.error('Error fetching albums:', err);
+      return h.response({
+        status: 'error',
+        message: 'Internal Server Error',
+        details: err.message || 'Unknown error',
+      }).code(500);
+    }
   }
-};
 
-const deleteAlbumById = async (request, h) => {
-  try {
-    await albumsService.deleteAlbumById(request.params.id);
-    return h.response({ status: 'success', message: 'Album deleted' }).code(200);
-  } catch (err) {
-    console.error('Error deleting album:', err);
-    return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
+  async getAlbumById(request, h) {
+    const { id } = request.params;
+    logger.info(`Received request to get album by ID: ${id}`);
+    try {
+      logger.info(`Fetching album with ID: ${id}`);
+      const album = await this._service.getAlbumById(id);
+      logger.info(`Fetched album with ID: ${id}`);
+      return h.response({
+        status: 'success',
+        data: { album },
+      }).code(200);
+    } catch (err) {
+      logger.error(`Error fetching album with ID: ${id}`, err);
+      return h.response({
+        status: 'fail',
+        message: err.message || 'Album not found',
+      }).code(404);
+    }
   }
-};
 
-module.exports = { addAlbum, getAlbums, getAlbumById, updateAlbumById, deleteAlbumById };
+  async updateAlbumById(request, h) {
+    const { id } = request.params;
+    logger.info(`Received request to update album by ID: ${id}`);
+    
+    const { error } = this._validator.validate(request.payload);
+    if (error) {
+      logger.error('Validation error:', error.details[0].message);
+      return h.response({
+        status: 'fail',
+        message: error.details[0].message,
+      }).code(400);
+    }
+
+    try {
+      await this._service.updateAlbumById(id, request.payload);
+      logger.info(`Album with ID: ${id} updated`);
+      return h.response({
+        status: 'success',
+        message: 'Album updated',
+      }).code(200);
+    } catch (err) {
+      logger.error(`Error updating album with ID: ${id}`, err);
+      return h.response({
+        status: 'error',
+        message: 'Internal Server Error',
+        details: err.message || 'Unknown error',
+      }).code(500);
+    }
+  }
+
+  async deleteAlbumById(request, h) {
+    const { id } = request.params;
+    logger.info(`Received request to delete album by ID: ${id}`);
+    try {
+      await this._service.deleteAlbumById(id);
+      logger.info(`Album with ID: ${id} deleted`);
+      return h.response({
+        status: 'success',
+        message: 'Album deleted',
+      }).code(200);
+    } catch (err) {
+      logger.error(`Error deleting album with ID: ${id}`, err);
+      return h.response({
+        status: 'error',
+        message: 'Internal Server Error',
+        details: err.message || 'Unknown error',
+      }).code(500);
+    }
+  }
+}
+
+module.exports = AlbumsHandler;

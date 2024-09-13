@@ -1,15 +1,16 @@
+// src/services/db.js
 const { Pool } = require('pg');
+require('dotenv').config();
 
-// Configure the connection pool using environment variables
 const pool = new Pool({
-  user: process.env.PGUSER || 'postgres',
-  host: process.env.PGHOST || 'localhost',
-  database: process.env.PGDATABASE || 'openmusic',
-  password: process.env.PGPASSWORD || 'r',
-  port: process.env.PGPORT || 5432,
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
 });
 
-// Test connection
+// Test the connection
 pool.connect((err) => {
   if (err) {
     console.error('Failed to connect to the database:', err);

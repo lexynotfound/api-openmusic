@@ -1,0 +1,20 @@
+2024-09-09 16:21:50 [error]: Error fetching album:
+2024-09-09 16:22:03 [error]: Error fetching album:
+2024-09-10 08:55:58 [error]: Error fetching album:
+2024-09-11 14:56:32 [error]: Error fetching album by ID 1dawda: invalid input syntax for type uuid: "1dawda"
+2024-09-11 14:56:32 [error]: Error fetching album: invalid input syntax for type uuid: "1dawda"
+2024-09-11 15:14:30 [error]: Error fetching albums: relation "albums" does not exist
+2024-09-11 15:14:30 [error]: Error fetching albums: relation "albums" does not exist
+2024-09-11 15:24:25 [error]: Error fetching album by ID 2: Album not found
+2024-09-11 15:24:25 [error]: Error fetching album: Album not found
+2024-09-11 15:30:54 [error]: Error fetching album by ID 2: Album not found
+2024-09-11 15:30:54 [error]: Error fetching album: Album not found
+2024-09-11 15:31:07 [error]: Error fetching album by ID 1: Album not found
+2024-09-11 15:31:07 [error]: Error fetching album: Album not found
+2024-09-12 11:15:44 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:16:42 [error]: Error fetching album with ID: albums-as312DSd Cannot read properties of undefined (reading 'getAlbumById')
+2024-09-12 11:16:49 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:16:50 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:19:28 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-12 11:23:14 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-12 11:24:02 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.

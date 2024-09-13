@@ -1,0 +1,182 @@
+2024-09-09 16:21:34 [info]: Received request to get albums
+2024-09-09 16:21:35 [info]: No albums found
+2024-09-09 16:21:43 [info]: Received request to get albums
+2024-09-09 16:21:43 [info]: No albums found
+2024-09-09 16:21:50 [info]: Received request to get album by ID: awdwada213-312
+2024-09-09 16:21:50 [error]: Error fetching album:
+2024-09-09 16:22:02 [info]: Received request to get album by ID: albums-dawdwadq2
+2024-09-09 16:22:03 [error]: Error fetching album:
+2024-09-09 16:22:16 [info]: Received request to get albums
+2024-09-09 16:22:16 [info]: No albums found
+2024-09-09 16:22:19 [info]: Received request to get albums
+2024-09-09 16:22:19 [info]: No albums found
+2024-09-10 08:38:45 [info]: Received request to get albums
+2024-09-10 08:38:46 [info]: No albums found
+2024-09-10 08:41:51 [info]: Received request to get albums
+2024-09-10 08:41:51 [info]: Fetched 0 albums
+2024-09-10 08:41:53 [info]: Received request to get albums
+2024-09-10 08:41:53 [info]: Fetched 0 albums
+2024-09-10 08:42:04 [info]: Received request to get albums
+2024-09-10 08:42:04 [info]: Fetched 0 albums
+2024-09-10 08:42:12 [info]: Received request to get albums
+2024-09-10 08:42:12 [info]: No albums found
+2024-09-10 08:46:51 [info]: Received request to get albums
+2024-09-10 08:46:51 [info]: No albums found
+2024-09-10 08:47:09 [info]: Received request to get albums
+2024-09-10 08:47:09 [info]: No albums found
+2024-09-10 08:55:58 [info]: Received request to get album by ID: albums-awd21321d
+2024-09-10 08:55:58 [error]: Error fetching album:
+2024-09-10 09:05:27 [info]: Received request to get songs
+2024-09-10 09:05:27 [info]: No songs found
+2024-09-10 09:05:29 [info]: Received request to get songs
+2024-09-10 09:05:29 [info]: No songs found
+2024-09-10 09:05:30 [info]: Received request to get songs
+2024-09-10 09:05:30 [info]: No songs found
+2024-09-10 09:05:31 [info]: Received request to get songs
+2024-09-10 09:05:31 [info]: No songs found
+2024-09-10 09:10:58 [info]: Received request to get albums
+2024-09-10 09:10:58 [info]: No albums found
+2024-09-10 09:11:13 [info]: Received request to get albums
+2024-09-10 09:11:13 [info]: No albums found
+2024-09-10 09:19:03 [info]: Received request to get albums
+2024-09-10 09:19:03 [info]: No albums found
+2024-09-10 09:19:04 [info]: Received request to get albums
+2024-09-10 09:19:04 [info]: No albums found
+2024-09-11 14:05:35 [info]: Received request to get albums
+2024-09-11 14:05:35 [info]: No albums found
+2024-09-11 14:05:35 [info]: Received request to get albums
+2024-09-11 14:05:35 [info]: No albums found
+2024-09-11 14:36:04 [info]: Received request to get albums
+2024-09-11 14:36:04 [info]: No albums found
+2024-09-11 14:36:07 [info]: Received request to get albums
+2024-09-11 14:36:07 [info]: No albums found
+2024-09-11 14:36:26 [info]: Received request to get songs
+2024-09-11 14:36:26 [info]: No songs found
+2024-09-11 14:36:26 [info]: Received request to get songs
+2024-09-11 14:36:26 [info]: No songs found
+2024-09-11 14:40:51 [info]: Received request to get songs
+2024-09-11 14:40:51 [info]: No songs found
+2024-09-11 14:47:45 [info]: Received request to get songs
+2024-09-11 14:47:45 [info]: No songs found
+2024-09-11 14:47:46 [info]: Received request to get songs
+2024-09-11 14:47:46 [info]: No songs found
+2024-09-11 14:47:49 [info]: Received request to get albums
+2024-09-11 14:47:49 [info]: No albums found
+2024-09-11 14:47:50 [info]: Received request to get albums
+2024-09-11 14:47:50 [info]: No albums found
+2024-09-11 14:49:38 [info]: Received request to get songs
+2024-09-11 14:49:38 [info]: No songs found
+2024-09-11 14:49:39 [info]: Received request to get songs
+2024-09-11 14:49:39 [info]: No songs found
+2024-09-11 14:49:44 [info]: Received request to get albums
+2024-09-11 14:49:44 [info]: No albums found
+2024-09-11 14:49:45 [info]: Received request to get albums
+2024-09-11 14:49:45 [info]: No albums found
+2024-09-11 14:55:59 [info]: Received request to get albums
+2024-09-11 14:55:59 [info]: Fetching all albums
+2024-09-11 14:56:00 [info]: Fetched 0 albums
+2024-09-11 14:56:32 [info]: Received request to get album by ID: 1dawda
+2024-09-11 14:56:32 [info]: Fetching album by ID: 1dawda
+2024-09-11 14:56:32 [error]: Error fetching album by ID 1dawda: invalid input syntax for type uuid: "1dawda"
+2024-09-11 14:56:32 [error]: Error fetching album: invalid input syntax for type uuid: "1dawda"
+2024-09-11 14:57:16 [info]: Received request to get albums
+2024-09-11 14:57:16 [info]: Fetching all albums
+2024-09-11 14:57:17 [info]: Fetched 0 albums
+2024-09-11 15:00:30 [info]: Received request to get albums
+2024-09-11 15:00:30 [info]: Fetching all albums
+2024-09-11 15:00:30 [info]: Fetched 1 albums
+2024-09-11 15:14:30 [info]: Received request to get albums
+2024-09-11 15:14:30 [info]: Fetching all albums
+2024-09-11 15:14:30 [error]: Error fetching albums: relation "albums" does not exist
+2024-09-11 15:14:30 [error]: Error fetching albums: relation "albums" does not exist
+2024-09-11 15:14:55 [info]: Received request to get albums
+2024-09-11 15:14:55 [info]: Fetching all albums
+2024-09-11 15:14:55 [info]: Fetched 0 albums
+2024-09-11 15:14:57 [info]: Received request to get songs
+2024-09-11 15:14:57 [info]: No songs found
+2024-09-11 15:14:58 [info]: Received request to get songs
+2024-09-11 15:14:58 [info]: No songs found
+2024-09-11 15:24:04 [info]: Received request to get albums
+2024-09-11 15:24:04 [info]: Fetching all albums
+2024-09-11 15:24:04 [info]: Fetched 1 albums
+2024-09-11 15:24:07 [info]: Received request to get album by ID: 1
+2024-09-11 15:24:07 [info]: Fetching album by ID: 1
+2024-09-11 15:24:25 [info]: Received request to get album by ID: 2
+2024-09-11 15:24:25 [info]: Fetching album by ID: 2
+2024-09-11 15:24:25 [error]: Error fetching album by ID 2: Album not found
+2024-09-11 15:24:25 [error]: Error fetching album: Album not found
+2024-09-11 15:30:54 [info]: Received request to get album by ID: 2
+2024-09-11 15:30:54 [info]: Fetching album by ID: 2
+2024-09-11 15:30:54 [error]: Error fetching album by ID 2: Album not found
+2024-09-11 15:30:54 [error]: Error fetching album: Album not found
+2024-09-11 15:30:56 [info]: Received request to get albums
+2024-09-11 15:30:56 [info]: Fetching all albums
+2024-09-11 15:30:56 [info]: Fetched 0 albums
+2024-09-11 15:31:07 [info]: Received request to get album by ID: 1
+2024-09-11 15:31:07 [info]: Fetching album by ID: 1
+2024-09-11 15:31:07 [error]: Error fetching album by ID 1: Album not found
+2024-09-11 15:31:07 [error]: Error fetching album: Album not found
+2024-09-11 15:33:27 [info]: Received request to get albums
+2024-09-11 15:33:27 [info]: Fetching all albums
+2024-09-11 15:33:27 [info]: Fetched 0 albums
+2024-09-11 15:36:40 [info]: Received request to get albums
+2024-09-11 15:36:40 [info]: Fetching all albums
+2024-09-11 15:36:40 [info]: Fetched 0 albums
+2024-09-11 15:38:29 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-11 15:38:29 [info]: Fetching album by ID: albums-as312DSd
+2024-09-11 15:39:44 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-11 15:39:44 [info]: Fetching album by ID: albums-as312DSd
+2024-09-11 15:51:46 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-11 15:52:32 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-11 16:11:04 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-11 16:11:06 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-12 11:15:44 [info]: Received request to get albums
+2024-09-12 11:15:44 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:16:42 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-12 11:16:42 [error]: Error fetching album with ID: albums-as312DSd Cannot read properties of undefined (reading 'getAlbumById')
+2024-09-12 11:16:49 [info]: Received request to get albums
+2024-09-12 11:16:49 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:16:50 [info]: Received request to get albums
+2024-09-12 11:16:50 [error]: Error fetching albums: Cannot read properties of undefined (reading 'getAlbums')
+2024-09-12 11:19:28 [info]: Received request to get albums
+2024-09-12 11:19:28 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-12 11:23:14 [info]: Received request to get albums
+2024-09-12 11:23:14 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-12 11:24:02 [info]: Received request to get albums
+2024-09-12 11:24:02 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-12 11:27:38 [info]: Received request to get albums
+2024-09-12 11:27:38 [info]: Executing select query for albums:
+2024-09-12 11:27:38 [info]: Select query result:
+2024-09-12 11:27:38 [info]: Fetched 1 albums
+2024-09-12 11:48:38 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-12 11:48:38 [info]: Fetching album by ID: albums-as312DSd
+2024-09-12 11:48:38 [info]: Album fetched with ID: albums-as312DSd
+2024-09-12 11:48:38 [info]: Fetched album with ID: albums-as312DSd
+2024-09-12 11:52:58 [info]: Received request to get album by ID: albums-as312DSd
+2024-09-12 11:52:58 [info]: Fetching album by ID: albums-as312DSd
+2024-09-12 11:52:59 [info]: Album fetched with ID: albums-as312DSd
+2024-09-12 11:52:59 [info]: Fetched album with ID: albums-as312DSd
+2024-09-12 15:00:14 [info]: Received request to get albums
+2024-09-12 15:00:14 [info]: Fetching albums with query params:
+2024-09-12 15:00:14 [info]: Executing select query for albums:
+2024-09-12 15:00:14 [info]: Select query result:
+2024-09-12 15:00:14 [info]: Fetched 1 albums
+2024-09-12 15:34:43 [info]: Received request to get albums
+2024-09-12 15:34:43 [info]: Executing select query for albums:
+2024-09-12 15:34:43 [info]: Select query result:
+2024-09-12 15:34:43 [info]: Fetched 1 albums
+2024-09-12 15:40:17 [info]: Received request to get albums
+2024-09-12 15:40:17 [info]: Fetching albums with query params:
+2024-09-12 15:40:17 [info]: Executing select query for albums:
+2024-09-12 15:40:17 [info]: Select query result:
+2024-09-12 15:40:17 [info]: Fetched 1 albums
+2024-09-12 15:42:30 [info]: Received request to get albums
+2024-09-12 15:42:30 [info]: Fetching albums with query params:
+2024-09-12 15:42:30 [info]: Executing select query for albums:
+2024-09-12 15:42:31 [info]: Select query result:
+2024-09-12 15:42:31 [info]: Fetched 1 albums
+2024-09-12 16:07:12 [info]: Received request to get albums
+2024-09-12 16:07:12 [info]: Fetching albums with query params:
+2024-09-12 16:07:12 [info]: Executing select query for albums:
+2024-09-12 16:07:12 [info]: Select query result:
+2024-09-12 16:07:12 [info]: Fetched 1 albums

@@ -1,19 +1,8 @@
-// src/services/AlbumsService.js
-const { Pool } = require('pg');
+const db = require('./db');
 const { nanoid } = require('nanoid');
+const logger = require('../utils/logger');
 
 class AlbumsService {
-  constructor() {
-    // Use environment variables for configuration consistency
-    this._pool = new Pool({
-      user: process.env.PGUSER || 'postgres',
-      host: process.env.PGHOST || 'localhost',
-      database: process.env.PGDATABASE || 'openmusic',
-      password: process.env.PGPASSWORD || 'r',
-      port: process.env.PGPORT || 5432,
-    });
-  }
-
   async addAlbum({ name, year }) {
     const id = `albums-${nanoid(16)}`;
     const query = {
@@ -21,12 +10,20 @@ class AlbumsService {
       values: [id, name, year],
     };
 
-    const result = await this._pool.query(query);
-    if (!result.rows[0].id) {
-      throw new Error('Album could not be added');
-    }
+    try {
+      logger.info('Executing insert query:', query);
+      const result = await db.query(query.text, query.values);
+      logger.info('Insert query result:', result);
 
-    return result.rows[0].id;
+      if (!result.rows[0].id) {
+        throw new Error('Album could not be added');
+      }
+
+      return result.rows[0].id;
+    } catch (err) {
+      logger.error('Error executing insert query:', err);
+      throw err;
+    }
   }
 
   async getAlbums({ name, year }) {
@@ -43,21 +40,35 @@ class AlbumsService {
       query += ` AND year = $${params.length}`;
     }
 
-    const result = await this._pool.query(query, params);
-    return result.rows;
+    logger.info('Executing select query for albums:', { query, params });
+    try {
+      const result = await db.query(query, params);
+      logger.info('Select query result:', result.rows.length);
+      return result.rows;
+    } catch (err) {
+      logger.error('Error executing select query for albums:', err);
+      throw err;
+    }
   }
 
   async getAlbumById(id) {
-    const albumResult = await this._pool.query('SELECT * FROM albums WHERE id = $1', [id]);
-    if (albumResult.rows.length === 0) {
-      throw new Error('Album not found');
+    logger.info(`Fetching album by ID: ${id}`);
+    try {
+      const albumResult = await db.query('SELECT * FROM albums WHERE id = $1', [id]);
+      if (albumResult.rows.length === 0) {
+        throw new Error('Album not found');
+      }
+
+      const songsResult = await db.query('SELECT * FROM songs WHERE "albumId" = $1', [id]);
+      const album = albumResult.rows[0];
+      album.songs = songsResult.rows;
+
+      logger.info(`Album fetched with ID: ${id}`, album);
+      return album;
+    } catch (err) {
+      logger.error(`Error fetching album by ID: ${id}`, err);
+      throw err;
     }
-
-    const songsResult = await this._pool.query('SELECT * FROM songs WHERE "albumId" = $1', [id]);
-    const album = albumResult.rows[0];
-    album.songs = songsResult.rows;
-
-    return album;
   }
 
   async updateAlbumById(id, { name, year }) {
@@ -66,12 +77,19 @@ class AlbumsService {
       values: [name, year, id],
     };
 
-    const result = await this._pool.query(query);
-    if (result.rowCount === 0) {
-      throw new Error('Album not found');
-    }
+    logger.info('Executing update query:', query);
+    try {
+      const result = await db.query(query.text, query.values);
+      if (result.rowCount === 0) {
+        throw new Error('Album not found');
+      }
 
-    return result.rows[0].id;
+      logger.info(`Album updated with ID: ${id}`);
+      return result.rows[0].id;
+    } catch (err) {
+      logger.error(`Error updating album by ID: ${id}`, err);
+      throw err;
+    }
   }
 
   async deleteAlbumById(id) {
@@ -80,12 +98,19 @@ class AlbumsService {
       values: [id],
     };
 
-    const result = await this._pool.query(query);
-    if (result.rowCount === 0) {
-      throw new Error('Album not found');
-    }
+    logger.info('Executing delete query:', query);
+    try {
+      const result = await db.query(query.text, query.values);
+      if (result.rowCount === 0) {
+        throw new Error('Album not found');
+      }
 
-    return result.rowCount;
+      logger.info(`Album deleted with ID: ${id}`);
+      return result.rowCount;
+    } catch (err) {
+      logger.error(`Error deleting album by ID: ${id}`, err);
+      throw err;
+    }
   }
 }
 

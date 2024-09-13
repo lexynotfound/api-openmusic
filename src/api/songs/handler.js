@@ -1,115 +1,83 @@
-// api/songs/handler.js
-const { nanoid } = require('nanoid');
-const { connect } = require('http2');
-const db = require('../../services/db');
+// src/api/songs/handler.js
+const SongsService = require('../../services/SongsService');
 const songSchema = require('../../validators/songsValid');
+const logger = require('../../utils/logger');
+const songsService = new SongsService();
 
 const addSong = async (request, h) => {
+  logger.info('Received request to add song:', request.payload);
   const { error, value } = songSchema.validate(request.payload);
   if (error) {
+    logger.error('Validation error:', error.details[0].message);
     return h.response({ status: 'fail', message: error.details[0].message }).code(400);
   }
 
-  const { title, performer, genre, duration, year, albumId } = value;
-  const id = `songs-${nanoid()}`;
-
   try {
-    const result = await db.query(
-      'INSERT INTO songs (id, title, performer, genre, duration, year, "albumId") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
-      [id, title, performer, genre, duration, year, albumId]
-    );
-
-    return h.response({ status: 'success', data: { songId: result.rows[0].id } }).code(201);
+    const songId = await songsService.addSong(value);
+    logger.info(`Song created with ID: ${songId}`);
+    return h.response({ status: 'success', data: { songId } }).code(201);
   } catch (err) {
-    console.error('Error creating song:', err);
+    logger.error('Error creating song:', err);
     return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
   }
 };
-
 
 const getSongs = async (request, h) => {
-  const { title, performer } = request.query;
-
-  let query = 'SELECT * FROM songs WHERE 1=1';
-  const params = [];
-
-  if (title) {
-    params.push(`%${title}%`);
-    query += ` AND title ILIKE $${params.length}`;
-  }
-
-  if (performer) {
-    params.push(`%${performer}%`);
-    query += ` AND performer ILIKE $${params.length}`;
-  }
-
+  logger.info('Received request to get songs');
   try {
-    const result = await db.query(query, params);
-
-    if (result.rows.length === 0) {
+    const songs = await songsService.getSongs(request.query);
+    if (songs.length === 0) {
+      logger.info('No songs found');
       return h.response({ status: 'fail', message: 'No songs found' }).code(404);
     }
-
-    return h.response({ status: 'success', data: { songs: result.rows } }).code(200);
+    logger.info(`Fetched ${songs.length} songs`);
+    return h.response({ status: 'success', data: { songs } }).code(200);
   } catch (err) {
-    console.error('Error fetching songs:', err);
+    logger.error('Error fetching songs:', err);
     return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
   }
 };
-
 
 const getSongById = async (request, h) => {
-  const { id } = request.params;
-
+  logger.info(`Received request to get song by ID: ${request.params.id}`);
   try {
-    const result = await db.query('SELECT * FROM songs WHERE id = $1', [id]);
-
-    if (result.rows.length === 0) {
-      return h.response({ status: 'fail', message: 'Song not found' }).code(404);
-    }
-
-    return h.response({ status: 'success', data: { song: result.rows[0] } }).code(200);
+    const song = await songsService.getSongById(request.params.id);
+    logger.info('Song found:', song);
+    return h.response({ status: 'success', data: { song } }).code(200);
   } catch (err) {
-    console.error('Error fetching song:', err);
-    return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
+    logger.error('Error fetching song:', err.message);
+    return h.response({ status: 'fail', message: err.message }).code(404);
   }
 };
 
-
 const updateSongById = async (request, h) => {
-  const { id } = request.params;
+  logger.info(`Received request to update song by ID: ${request.params.id}`);
   const { error, value } = songSchema.validate(request.payload);
   if (error) {
+    logger.error('Validation error:', error.details[0].message);
     return h.response({ status: 'fail', message: error.details[0].message }).code(400);
   }
 
-  const { title, performer, genre, duration, year, albumId } = value;
-
   try {
-    await db.query(
-      'UPDATE songs SET title = $1, performer = $2, genre = $3, duration = $4, year = $5, "albumId" = $6 WHERE id = $7',
-      [title, performer, genre, duration, year, albumId, id]
-    );
-
+    await songsService.updateSongById(request.params.id, value);
+    logger.info(`Song with ID: ${request.params.id} updated`);
     return h.response({ status: 'success', message: 'Song updated' }).code(200);
   } catch (err) {
-    console.error('Error updating song:', err);
+    logger.error('Error updating song:', err);
     return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
   }
 };
-
 
 const deleteSongById = async (request, h) => {
-  const { id } = request.params;
-
+  logger.info(`Received request to delete song by ID: ${request.params.id}`);
   try {
-    await db.query('DELETE FROM songs WHERE id = $1', [id]);
+    await songsService.deleteSongById(request.params.id);
+    logger.info(`Song with ID: ${request.params.id} deleted`);
     return h.response({ status: 'success', message: 'Song deleted' }).code(200);
   } catch (err) {
-    console.error('Error deleting song:', err);
+    logger.error('Error deleting song:', err);
     return h.response({ status: 'error', message: 'Internal Server Error', details: err.message }).code(500);
   }
 };
-
 
 module.exports = { addSong, getSongs, getSongById, updateSongById, deleteSongById };
