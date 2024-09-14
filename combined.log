@@ -180,3 +180,77 @@
 2024-09-12 16:07:12 [info]: Executing select query for albums:
 2024-09-12 16:07:12 [info]: Select query result:
 2024-09-12 16:07:12 [info]: Fetched 1 albums
+2024-09-14 21:11:37 [info]: Received request to add album:
+2024-09-14 21:11:37 [info]: Attempting to add album with name: JHL, year: 2001
+2024-09-14 21:11:37 [info]: Executing insert query:
+2024-09-14 21:11:37 [info]: Insert query result:
+2024-09-14 21:11:37 [info]: Album created with ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:11:56 [info]: Received request to get albums
+2024-09-14 21:11:56 [info]: Fetching albums with query params:
+2024-09-14 21:11:56 [info]: Executing select query for albums:
+2024-09-14 21:11:56 [info]: Select query result:
+2024-09-14 21:11:56 [info]: Fetched 2 albums
+2024-09-14 21:12:24 [info]: Received request to update album by ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:24 [info]: Executing update query:
+2024-09-14 21:12:24 [info]: Album updated with ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:24 [info]: Album with ID: albums-DdEFCzn5u_i7DlWT updated
+2024-09-14 21:12:30 [info]: Received request to get album by ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:30 [info]: Fetching album with ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:30 [info]: Fetching album by ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:30 [info]: Album fetched with ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:12:30 [info]: Fetched album with ID: albums-DdEFCzn5u_i7DlWT
+2024-09-14 21:13:52 [info]: Received request to add album:
+2024-09-14 21:13:52 [info]: Attempting to add album with name: 24K MAGIC, year: 2016
+2024-09-14 21:13:52 [info]: Executing insert query:
+2024-09-14 21:13:53 [info]: Insert query result:
+2024-09-14 21:13:53 [info]: Album created with ID: albums-ITlk-9bAyj7ircMH
+2024-09-14 21:15:46 [info]: Received request to add album:
+2024-09-14 21:15:46 [info]: Attempting to add album with name: Unorthodox Jukebox, year: 2016
+2024-09-14 21:15:46 [info]: Executing insert query:
+2024-09-14 21:15:46 [info]: Insert query result:
+2024-09-14 21:15:46 [info]: Album created with ID: albums-WecIvs6rYlvWy2qC
+2024-09-14 21:19:17 [info]: Received request to add album:
+2024-09-14 21:19:17 [info]: Attempting to add album with name: Forever Young, year: 1984
+2024-09-14 21:19:17 [info]: Executing insert query:
+2024-09-14 21:19:17 [info]: Insert query result:
+2024-09-14 21:19:17 [info]: Album created with ID: albums-TJlk2Bdxi7JkdVEF
+2024-09-14 21:19:39 [info]: Received request to get albums
+2024-09-14 21:19:39 [info]: Fetching albums with query params:
+2024-09-14 21:19:39 [info]: Executing select query for albums:
+2024-09-14 21:19:39 [info]: Select query result:
+2024-09-14 21:19:39 [info]: Fetched 5 albums
+2024-09-14 21:19:53 [info]: Received request to delete album by ID: albums-as312DSd
+2024-09-14 21:19:53 [info]: Executing delete query:
+2024-09-14 21:19:53 [info]: Album deleted with ID: albums-as312DSd
+2024-09-14 21:19:53 [info]: Album with ID: albums-as312DSd deleted
+2024-09-14 21:20:10 [info]: Received request to get albums
+2024-09-14 21:20:10 [info]: Fetching albums with query params:
+2024-09-14 21:20:10 [info]: Executing select query for albums:
+2024-09-14 21:20:10 [info]: Select query result:
+2024-09-14 21:20:10 [info]: Fetched 4 albums
+2024-09-14 21:20:27 [info]: Received request to add song:
+2024-09-14 21:20:27 [error]: Validation error:
+2024-09-14 21:20:35 [info]: Received request to add song:
+2024-09-14 21:20:35 [error]: Validation error:
+2024-09-14 21:20:59 [info]: Received request to add song:
+2024-09-14 21:20:59 [error]: Validation error:
+2024-09-14 21:21:34 [info]: Received request to add song:
+2024-09-14 21:21:34 [error]: Validation error:
+2024-09-14 21:21:43 [info]: Received request to add song:
+2024-09-14 21:21:43 [info]: Song created with ID: songs-rXojsWsYEydhs2e9
+2024-09-14 21:22:10 [info]: Received request to update song by ID: songs-rXojsWsYEydhs2e9
+2024-09-14 21:22:10 [info]: Song with ID: songs-rXojsWsYEydhs2e9 updated
+2024-09-14 21:22:15 [info]: Received request to get song by ID: songs-rXojsWsYEydhs2e9
+2024-09-14 21:22:15 [info]: Song found:
+2024-09-14 21:24:05 [info]: Received request to get songs
+2024-09-14 21:24:05 [info]: Fetched 1 songs
+2024-09-14 21:24:11 [info]: Received request to get albums
+2024-09-14 21:24:11 [info]: Fetching albums with query params:
+2024-09-14 21:24:11 [info]: Executing select query for albums:
+2024-09-14 21:24:11 [info]: Select query result:
+2024-09-14 21:24:11 [info]: Fetched 4 albums
+2024-09-14 21:24:29 [info]: Received request to get album by ID: albums-TJlk2Bdxi7JkdVEF
+2024-09-14 21:24:29 [info]: Fetching album with ID: albums-TJlk2Bdxi7JkdVEF
+2024-09-14 21:24:29 [info]: Fetching album by ID: albums-TJlk2Bdxi7JkdVEF
+2024-09-14 21:24:29 [info]: Album fetched with ID: albums-TJlk2Bdxi7JkdVEF
+2024-09-14 21:24:29 [info]: Fetched album with ID: albums-TJlk2Bdxi7JkdVEF

@@ -33,7 +33,7 @@ class AlbumsHandler {
       logger.info(`Album created with ID: ${albumId}`);
       return h.response({
         status: 'success',
-        data: { albumId: albumId.id },
+        data: { albumId, name, year },
       }).code(201);
     } catch (err) {
       logger.error('Error adding album:', err);

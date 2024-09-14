@@ -18,3 +18,7 @@
 2024-09-12 11:19:28 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
 2024-09-12 11:23:14 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
 2024-09-12 11:24:02 [error]: Error fetching albums: Cannot destructure property 'name' of 'undefined' as it is undefined.
+2024-09-14 21:20:27 [error]: Validation error:
+2024-09-14 21:20:35 [error]: Validation error:
+2024-09-14 21:20:59 [error]: Validation error:
+2024-09-14 21:21:34 [error]: Validation error:
