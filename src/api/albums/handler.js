@@ -100,7 +100,14 @@ class AlbumsHandler {
     }
 
     try {
-      await this._service.updateAlbumById(id, request.payload);
+      const albumsUp = await this._service.updateAlbumById(id, request.payload);
+      if(!albumsUp) {
+        logger.warn(`Album with ID: ${id} not found`);
+        return h.response({
+          status: 'fail',
+          message: "Album not found",
+        }).code(404);
+      }
       logger.info(`Album with ID: ${id} updated`);
       return h.response({
         status: 'success',
@@ -120,7 +127,14 @@ class AlbumsHandler {
     const { id } = request.params;
     logger.info(`Received request to delete album by ID: ${id}`);
     try {
-      await this._service.deleteAlbumById(id);
+      const albumDel = await this._service.deleteAlbumById(id);
+      if(!albumDel){
+        logger.warn(`Album with ID: ${id} not found`);
+        return h.response({
+          status: 'fail',
+          message: "Album notfound",
+        }).code(404);
+      }
       logger.info(`Album with ID: ${id} deleted`);
       return h.response({
         status: 'success',

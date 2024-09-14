@@ -22,3 +22,38 @@
 2024-09-14 21:20:35 [error]: Validation error:
 2024-09-14 21:20:59 [error]: Validation error:
 2024-09-14 21:21:34 [error]: Validation error:
+2024-09-14 21:56:15 [error]: Validation error:
+2024-09-14 21:56:40 [error]: Error updating album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:56:40 [error]: Error updating album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:56:58 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:56:58 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:57:33 [error]: Error updating album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:57:33 [error]: Error updating album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:57:40 [error]: Error deleting album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:57:40 [error]: Error deleting album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:58:48 [error]: Error deleting album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:58:48 [error]: Error deleting album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:58:59 [error]: Error updating album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 21:58:59 [error]: Error updating album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:04 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:04 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:07 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:07 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:09 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:09 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:21 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:00:21 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:02 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:02 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:33 [error]: Error updating album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:33 [error]: Error updating album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:37 [error]: Error deleting album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:37 [error]: Error deleting album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:45 [error]: Error deleting album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:45 [error]: Error deleting album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:54 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:07:54 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:09:05 [error]: Error fetching album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:09:05 [error]: Error fetching album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:09:12 [error]: Error updating album by ID: albums-TJlk2Bdxi7JkdVEFS Album not found
+2024-09-14 22:09:12 [error]: Error updating album with ID: albums-TJlk2Bdxi7JkdVEFS Album not found
