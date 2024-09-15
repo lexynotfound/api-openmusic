@@ -77,7 +77,7 @@ const updateSongById = async (request, h) => {
     const { error, value } = songSchema.validate(request.payload);
     if (error) {
       logger.error('Validation error:', error.details[0].message);
-      return h.response({ status: 'error', message: error.details[0].message }).code(400);
+      return h.response({ status: 'fail', message: error.details[0].message }).code(400);
     }
 
     await songsService.updateSongById(request.params.id, value);
