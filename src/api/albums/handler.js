@@ -20,7 +20,7 @@ class AlbumsHandler {
     if (error) {
       logger.error('Validation error:', error.details[0].message);
       return h.response({
-        status: 'fail',
+        status: 'error',
         message: error.details[0].message,
       }).code(400); // Return 400 Bad Request if validation fails
     }
@@ -80,7 +80,7 @@ class AlbumsHandler {
     } catch (err) {
       logger.error(`Error fetching album with ID: ${id}`, err);
       return h.response({
-        status: 'fail',
+        status: 'error',
         message: err.message || 'Album not found',
       }).code(404);
     }
@@ -89,31 +89,43 @@ class AlbumsHandler {
   async updateAlbumById(request, h) {
     const { id } = request.params;
     logger.info(`Received request to update album by ID: ${id}`);
-    
-    const { error } = this._validator.validate(request.payload);
-    if (error) {
-      logger.error('Validation error:', error.details[0].message);
-      return h.response({
-        status: 'fail',
-        message: error.details[0].message,
-      }).code(400);
-    }
 
     try {
-      const albumsUp = await this._service.updateAlbumById(id, request.payload);
-      if(!albumsUp) {
+      // Check if the album exists
+      const existingAlbum = await this._service.getAlbumById(id);
+      logger.info('Value of existingAlbum:', existingAlbum);
+      if (!existingAlbum) {
         logger.warn(`Album with ID: ${id} not found`);
         return h.response({
-          status: 'fail',
-          message: "Album not found",
-        }).code(404);
+          status: 'error',
+          message: 'Album not found',
+        }).code(404); // Return 404 Not Found if the album does not exist
       }
+
+       // Validate the request payload
+      const { error } = this._validator.validate(request.payload);
+      if (error) {
+        logger.error('Validation error:', error.details[0].message);
+        return h.response({
+          status: 'error',
+          message: error.details[0].message,
+        }).code(400);
+      }
+
+      // Proceed with the update
+      await this._service.updateAlbumById(id, request.payload);
       logger.info(`Album with ID: ${id} updated`);
       return h.response({
         status: 'success',
         message: 'Album updated',
       }).code(200);
     } catch (err) {
+      if (err.message.includes('not found')) {
+      return h.response({
+        status: 'error',
+        message: 'Album not found',
+      }).code(404);
+    }
       logger.error(`Error updating album with ID: ${id}`, err);
       return h.response({
         status: 'error',
@@ -124,31 +136,45 @@ class AlbumsHandler {
   }
 
   async deleteAlbumById(request, h) {
-    const { id } = request.params;
-    logger.info(`Received request to delete album by ID: ${id}`);
-    try {
-      const albumDel = await this._service.deleteAlbumById(id);
-      if(!albumDel){
-        logger.warn(`Album with ID: ${id} not found`);
-        return h.response({
-          status: 'fail',
-          message: "Album notfound",
-        }).code(404);
-      }
-      logger.info(`Album with ID: ${id} deleted`);
-      return h.response({
-        status: 'success',
-        message: 'Album deleted',
-      }).code(200);
-    } catch (err) {
-      logger.error(`Error deleting album with ID: ${id}`, err);
+  const { id } = request.params;
+  logger.info(`Received request to delete album by ID: ${id}`);
+  try {
+    const albumDel = await this._service.getAlbumById(id);
+    console.log(albumDel);
+    logger.info('Value of albumDel:', albumDel);
+
+    if (!albumDel) {
+      logger.warn(`Album with ID: ${id} not found`);
       return h.response({
         status: 'error',
-        message: 'Internal Server Error',
-        details: err.message || 'Unknown error',
-      }).code(500);
+        message: 'Album not found',
+      }).code(404); // Return 404 Not Found if the album does not exist
     }
+
+    // Proceed with the deletion
+    await this._service.deleteAlbumById(id);
+    logger.info(`Album with ID: ${id} deleted`);
+    return h.response({
+      status: 'success',
+      message: 'Album deleted',
+    }).code(200);
+  } catch (err) {
+    // Differentiate between "not found" and "server error"
+    if (err.message.includes('not found')) {
+      return h.response({
+        status: 'error',
+        message: 'Album not found',
+      }).code(404);
+    }
+    logger.error(`Error deleting album with ID: ${id}`, err);
+    return h.response({
+      status: 'error',
+      message: 'Internal Server Error',
+      details: err.message || 'Unknown error',
+    }).code(500);
   }
+}
+
 }
 
 module.exports = AlbumsHandler;
