@@ -9,7 +9,7 @@ const addSong = async (request, h) => {
   const { error, value } = songSchema.validate(request.payload);
   if (error) {
     logger.error('Validation error:', error.details[0].message);
-    return h.response({ status: 'error', message: error.details[0].message }).code(400);
+    return h.response({ status: 'fail', message: error.details[0].message }).code(400);
   }
 
   try {
@@ -28,7 +28,7 @@ const getSongs = async (request, h) => {
     const songs = await songsService.getSongs(request.query);
     if (songs.length === 0) {
       logger.info('No songs found');
-      return h.response({ status: 'error', message: 'No songs found' }).code(404);
+      return h.response({ status: 'fail', message: 'No songs found' }).code(404);
     } 
     const filteredSongs = songs.map(({ id, title, performer }) => ({ id, title, performer })); // Only show required fields
     logger.info(`Fetched ${filteredSongs.length} songs`);
@@ -49,7 +49,7 @@ const getSongById = async (request, h) => {
     logger.error('Error fetchingsong:', err);
     if(err.message.includes('not found')){
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: "Songs Notfound",
       }).code(404);
     }
@@ -63,13 +63,13 @@ const updateSongById = async (request, h) => {
   logger.info(`Received request to update song by ID: ${request.params.id}`);
 
   try {
-     // Check if the album exists
+     // Check if the song exists
     const existingSongs = await songsService.getSongById(request.params.id);
     logger.info('Value of existingAlbum:', existingSongs);
     if (!existingSongs) {
       logger.warn(`Album with ID: ${id} not found`);
         return h.response({
-          status: 'error',
+          status: 'fail',
           message: 'Songs notfound',
       }).code(404); // Return 404 Not Found if the album does not exist
     }
@@ -87,7 +87,7 @@ const updateSongById = async (request, h) => {
     logger.error('Error deleting song:', err);
     if(err.message.includes('not found')){
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: "Songs Notfound",
       }).code(404);
     }
@@ -106,7 +106,7 @@ const deleteSongById = async (request, h) => {
     logger.error('Error deleting song:', err);
     if(err.message.includes('not found')){
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: "Songs Notfound",
       }).code(404);
     }

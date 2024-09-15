@@ -20,7 +20,7 @@ class AlbumsHandler {
     if (error) {
       logger.error('Validation error:', error.details[0].message);
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: error.details[0].message,
       }).code(400); // Return 400 Bad Request if validation fails
     }
@@ -78,11 +78,19 @@ class AlbumsHandler {
         data: { album },
       }).code(200);
     } catch (err) {
-      logger.error(`Error fetching album with ID: ${id}`, err);
+      if (err.message.includes('not found')){
+        logger.error(`Error fetching album with ID: ${id}`, err);
+        return h.response({
+          status: 'fail',
+          message: err.message || 'Album not found',
+        }).code(404);
+      }
+      logger.error(`Error updating album with ID: ${id}`, err);
       return h.response({
         status: 'error',
-        message: err.message || 'Album not found',
-      }).code(404);
+        message: 'Internal Server Error',
+        details: err.message || 'Unknown error',
+      }).code(500);
     }
   }
 
@@ -97,7 +105,7 @@ class AlbumsHandler {
       if (!existingAlbum) {
         logger.warn(`Album with ID: ${id} not found`);
         return h.response({
-          status: 'error',
+          status: 'fail',
           message: 'Album not found',
         }).code(404); // Return 404 Not Found if the album does not exist
       }
@@ -107,7 +115,7 @@ class AlbumsHandler {
       if (error) {
         logger.error('Validation error:', error.details[0].message);
         return h.response({
-          status: 'error',
+          status: 'fail',
           message: error.details[0].message,
         }).code(400);
       }
@@ -122,7 +130,7 @@ class AlbumsHandler {
     } catch (err) {
       if (err.message.includes('not found')) {
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: 'Album not found',
       }).code(404);
     }
@@ -146,7 +154,7 @@ class AlbumsHandler {
     if (!albumDel) {
       logger.warn(`Album with ID: ${id} not found`);
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: 'Album not found',
       }).code(404); // Return 404 Not Found if the album does not exist
     }
@@ -162,7 +170,7 @@ class AlbumsHandler {
     // Differentiate between "not found" and "server error"
     if (err.message.includes('not found')) {
       return h.response({
-        status: 'error',
+        status: 'fail',
         message: 'Album not found',
       }).code(404);
     }

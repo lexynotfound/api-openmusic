@@ -559,3 +559,13 @@
 2024-09-15 18:12:50 [error]: Error updating song: Cannot access 'value' before initialization
 2024-09-15 18:13:30 [info]: Received request to update song by ID: albums-DdEFCzn5u_i7DlWT
 2024-09-15 18:13:30 [error]: Validation error:
+2024-09-15 20:02:04 [info]: Received request to get songs
+2024-09-15 20:02:04 [info]: Fetched 2 songs
+2024-09-15 20:02:14 [info]: Received request to update song by ID: songs-rXojsWsYEydhs2e9
+2024-09-15 20:02:14 [info]: Value of existingAlbum:
+2024-09-15 20:02:14 [error]: Validation error:
+2024-09-15 20:06:01 [info]: Received request to get album by ID: songs-rXojsWsYEydhs2e9
+2024-09-15 20:06:01 [info]: Fetching album with ID: songs-rXojsWsYEydhs2e9
+2024-09-15 20:06:01 [info]: Fetching album by ID: songs-rXojsWsYEydhs2e9
+2024-09-15 20:06:01 [error]: Error fetching album by ID: songs-rXojsWsYEydhs2e9 Album not found
+2024-09-15 20:06:01 [error]: Error fetching album with ID: songs-rXojsWsYEydhs2e9 Album not found
