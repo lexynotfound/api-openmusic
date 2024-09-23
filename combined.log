@@ -569,3 +569,51 @@
 2024-09-15 20:06:01 [info]: Fetching album by ID: songs-rXojsWsYEydhs2e9
 2024-09-15 20:06:01 [error]: Error fetching album by ID: songs-rXojsWsYEydhs2e9 Album not found
 2024-09-15 20:06:01 [error]: Error fetching album with ID: songs-rXojsWsYEydhs2e9 Album not found
+2024-09-17 21:17:49 [info]: Received request to get album by ID: songs-rXojsWsYEydhs2e9
+2024-09-17 21:17:49 [info]: Fetching album with ID: songs-rXojsWsYEydhs2e9
+2024-09-17 21:17:49 [info]: Fetching album by ID: songs-rXojsWsYEydhs2e9
+2024-09-17 21:17:50 [error]: Error fetching album by ID: songs-rXojsWsYEydhs2e9 Album not found
+2024-09-17 21:17:50 [error]: Error fetching album with ID: songs-rXojsWsYEydhs2e9 Album not found
+2024-09-17 21:18:00 [info]: Received request to update album by ID: songs-rXojsWsYEydhs2e9
+2024-09-17 21:18:00 [info]: Fetching album by ID: songs-rXojsWsYEydhs2e9
+2024-09-17 21:18:01 [error]: Error fetching album by ID: songs-rXojsWsYEydhs2e9 Album not found
+2024-09-17 21:18:14 [info]: Received request to get albums
+2024-09-17 21:18:15 [info]: Fetching albums with query params:
+2024-09-17 21:18:15 [info]: Executing select query for albums:
+2024-09-17 21:18:15 [info]: Select query result:
+2024-09-17 21:18:15 [info]: Fetched 4 albums
+2024-09-17 21:18:29 [info]: Received request to update album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:29 [info]: Fetching album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:29 [info]: Album fetched with ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:29 [info]: Value of existingAlbum:
+2024-09-17 21:18:29 [error]: Validation error:
+2024-09-17 21:18:49 [info]: Received request to update album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:49 [info]: Fetching album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:50 [info]: Album fetched with ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:18:50 [info]: Value of existingAlbum:
+2024-09-17 21:18:50 [error]: Validation error:
+2024-09-17 21:19:23 [info]: Received request to get albums
+2024-09-17 21:19:23 [info]: Fetching albums with query params:
+2024-09-17 21:19:23 [info]: Executing select query for albums:
+2024-09-17 21:19:23 [info]: Select query result:
+2024-09-17 21:19:23 [info]: Fetched 4 albums
+2024-09-17 21:21:42 [info]: Received request to update album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:21:42 [info]: Fetching album by ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:21:42 [info]: Album fetched with ID: albums-ITlk-9bAyj7ircMH
+2024-09-17 21:21:42 [info]: Value of existingAlbum:
+2024-09-17 21:21:42 [error]: Validation error:
+2024-09-17 21:30:27 [info]: Received request to get albums
+2024-09-17 21:30:27 [info]: Fetching albums with query params:
+2024-09-17 21:30:27 [info]: Executing select query for albums:
+2024-09-17 21:30:27 [info]: Select query result:
+2024-09-17 21:30:27 [info]: Fetched 4 albums
+2024-09-17 21:30:44 [info]: Received request to get albums
+2024-09-17 21:30:44 [info]: Fetching albums with query params:
+2024-09-17 21:30:44 [info]: Executing select query for albums:
+2024-09-17 21:30:44 [info]: Select query result:
+2024-09-17 21:30:44 [info]: Fetched 4 albums
+2024-09-17 21:32:13 [info]: Received request to get albums
+2024-09-17 21:32:13 [info]: Fetching albums with query params:
+2024-09-17 21:32:13 [info]: Executing select query for albums:
+2024-09-17 21:32:13 [info]: Select query result:
+2024-09-17 21:32:13 [info]: Fetched 4 albums
