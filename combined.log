@@ -617,3 +617,121 @@
 2024-09-17 21:32:13 [info]: Executing select query for albums:
 2024-09-17 21:32:13 [info]: Select query result:
 2024-09-17 21:32:13 [info]: Fetched 4 albums
+2024-09-24 11:14:46 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:14:47 [info]: Fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:14:47 [info]: Successfully fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:21:58 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:21:58 [info]: Successfully fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:22:00 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:22:00 [info]: Successfully fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:22:22 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68SS
+2024-09-24 11:22:22 [warn]: User with ID: user-Yfk8VBQ2Lhnhb68SS not found
+2024-09-24 11:22:22 [warn]: User with ID: user-Yfk8VBQ2Lhnhb68SS not found
+2024-09-24 11:22:26 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:22:26 [info]: Fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:22:26 [info]: Successfully fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:23:50 [info]: Received request to get user by ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:23:50 [info]: Fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:23:50 [info]: Successfully fetched user with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:24:10 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:24:19 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:24:19 [warn]: Invalid login attempt: secretOrPrivateKey must have a value
+2024-09-24 11:27:42 [warn]: Invalid password for username: test
+2024-09-24 11:27:42 [warn]: Invalid login attempt: Invalid credentials
+2024-09-24 11:28:40 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 11:28:40 [warn]: Invalid login attempt: secretOrPrivateKey must have a value
+2024-09-24 11:36:04 [error]: User validation failed: Fullname is required
+2024-09-24 11:36:17 [error]: User validation failed: Email is required
+2024-09-24 11:36:32 [error]: User validation failed: Confirm password is required
+2024-09-24 11:37:06 [warn]: Attempt to register with a taken username
+2024-09-24 11:37:06 [error]: Error adding user: Username already taken
+2024-09-24 11:37:22 [warn]: Attempt to register with a taken username
+2024-09-24 11:37:22 [error]: Error adding user: Username already taken
+2024-09-24 11:37:25 [warn]: Attempt to register with a taken username
+2024-09-24 11:37:25 [error]: Error adding user: Username already taken
+2024-09-24 11:37:40 [warn]: Attempt to register with a taken username
+2024-09-24 11:37:40 [error]: Error adding user: Username already taken
+2024-09-24 11:52:34 [warn]: Attempt to register with a taken username
+2024-09-24 11:52:34 [error]: Error adding user: Username already taken
+2024-09-24 11:53:53 [warn]: Attempt to register with a taken username
+2024-09-24 11:53:53 [error]: Error adding user: Username already taken
+2024-09-24 11:53:57 [warn]: Attempt to register with a taken username
+2024-09-24 11:53:57 [error]: Error adding user: Username already taken
+2024-09-24 11:54:06 [info]: No Existing users found with the provided username or email
+2024-09-24 11:54:06 [info]: User registered with ID: user-kq-M1tta3rJqbgFA
+2024-09-24 11:54:06 [info]: User added with ID: user-kq-M1tta3rJqbgFA
+2024-09-24 11:54:57 [warn]: Attempt to register with a taken email
+2024-09-24 11:54:57 [error]: Error adding user: Email already taken
+2024-09-24 11:55:31 [warn]: Attempt to register with a taken username
+2024-09-24 11:55:31 [error]: Error adding user: Username already taken
+2024-09-24 11:56:14 [warn]: Attempt to register with a taken email
+2024-09-24 11:56:14 [error]: Error adding user: Email already taken
+2024-09-24 12:00:12 [warn]: Attempt to register with a taken email
+2024-09-24 12:00:12 [error]: Error adding user: Email already taken
+2024-09-24 12:00:16 [warn]: Attempt to register with a taken username
+2024-09-24 12:00:16 [error]: Error adding user: Username already taken
+2024-09-24 12:01:01 [warn]: Attempt to register with a taken username
+2024-09-24 12:01:01 [warn]: User registration failed: Username already taken
+2024-09-24 12:01:07 [warn]: Attempt to register with a taken email
+2024-09-24 12:01:07 [warn]: User registration failed: Email already taken
+2024-09-24 12:01:23 [warn]: Attempt to register with a taken email
+2024-09-24 12:01:23 [error]: Error adding user: Email already taken
+2024-09-24 12:03:06 [warn]: Attempt to register with a taken email
+2024-09-24 12:03:06 [error]: Error adding user: Email already taken
+2024-09-24 12:03:40 [warn]: Attempt to register with a taken email
+2024-09-24 12:03:40 [error]: Error adding user: Email already taken
+2024-09-24 12:05:16 [warn]: Attempt to register with a taken email
+2024-09-24 12:05:16 [error]: Error adding user: Email already taken
+2024-09-24 12:06:02 [warn]: Attempt to register with a taken email
+2024-09-24 12:06:02 [error]: Error adding user: Email already taken
+2024-09-24 12:06:13 [warn]: Attempt to register with a taken email
+2024-09-24 12:06:13 [error]: Error adding user: Email already taken
+2024-09-24 12:08:08 [warn]: Attempt to register with a taken email
+2024-09-24 12:08:08 [error]: Error adding user: Email already taken
+2024-09-24 12:09:09 [warn]: Attempt to register with a taken email
+2024-09-24 12:09:09 [error]: Error adding user: Email already taken
+2024-09-24 12:09:32 [warn]: Attempt to register with a taken email
+2024-09-24 12:09:32 [error]: Error adding user: Email already taken
+2024-09-24 12:09:47 [warn]: Attempt to register with a taken username
+2024-09-24 12:09:47 [error]: Error adding user: Username already taken
+2024-09-24 12:10:08 [warn]: Attempt to register with a taken email
+2024-09-24 12:10:08 [error]: Error adding user: Email already taken
+2024-09-24 12:10:12 [info]: No Existing users found with the provided username or email
+2024-09-24 12:10:12 [info]: User registered with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 12:10:12 [info]: User added with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 12:10:27 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 12:10:27 [warn]: Invalid login attempt: secretOrPrivateKey must have a value
+2024-09-24 13:45:25 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 13:45:25 [warn]: Invalid login attempt: secretOrPrivateKey must have a value
+2024-09-24 13:46:11 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 13:46:11 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 15:51:35 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 15:51:35 [warn]: Invalid login attempt: nanoid is not defined
+2024-09-24 15:53:20 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 15:53:20 [warn]: Invalid login attempt: nanoid is not defined
+2024-09-24 15:56:56 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 15:56:56 [warn]: Invalid login attempt: relation "refresh_tokens" does not exist
+2024-09-24 15:57:10 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 15:57:10 [warn]: Invalid login attempt: relation "refresh_tokens" does not exist
+2024-09-24 16:01:40 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:01:40 [info]: Refresh token saved for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:01:40 [info]: User logged in successfully with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:04:14 [warn]: Invalid refresh token: undefined
+2024-09-24 16:04:14 [warn]: Invalid refresh token: Invalid refresh token
+2024-09-24 16:04:51 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:04:51 [info]: Refresh token saved for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:04:51 [info]: User logged in successfully with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 16:06:13 [warn]: Invalid refresh token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLVlmazhWQlEyTGhuaGI2OFMiLCJpYXQiOjE3MjcxNjg2OTF9.VdlUciJV2rM8EIv3zLxmO6ozGVkn1T1fW8dHK5ft4Ocs
+2024-09-24 16:06:13 [warn]: Invalid refresh token: Invalid refresh token
+2024-09-24 18:41:16 [info]: Refresh token deleted: undefined
+2024-09-24 18:41:16 [info]: User logged out and refresh token deleted
+2024-09-24 18:41:34 [info]: Refresh token deleted: xxx
+2024-09-24 18:41:34 [info]: User logged out and refresh token deleted
+2024-09-24 18:41:47 [info]: Refresh token deleted: {{refreshTokenJohn}}
+2024-09-24 18:41:47 [info]: User logged out and refresh token deleted
+2024-09-24 18:43:25 [warn]: Invalid refresh token: {{refreshTokenJohn}}
+2024-09-24 18:43:25 [warn]: Invalid refresh token: Invalid refresh token
+2024-09-24 19:16:25 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 19:16:25 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 19:16:25 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 19:16:45 [error]: Validation Error: "value" must be of type object

@@ -2,11 +2,16 @@ const Hapi = require('@hapi/hapi');
 const albumsPlugin = require('./api/albums/index'); // Albums plugin
 const songsPlugin = require('./api/songs/index.js');   // Songs plugin (assuming it's similarly structured)
 const usersPlugin = require('./api/users/index.js'); 
+const authPlugin = require('./api/auth/index.js'); 
 const playlistPlugin = require('./api/playlists/index.js'); 
 const AlbumsService = require('./services/AlbumsServices.js'); // Correct import
 const UsersService = require('./services/UsersServices.js'); // Correct import
+const PlaylistsService = require('./services/PlaylistsServices.js'); // Correct import
+const AuthService = require('./services/AuthServices'); // Correct import
 const albumSchema = require('./validators/albumsValid'); // Import validator
 const usersSchema = require('./validators/usersValid'); // Import validator
+const loginSchema = require('./validators/loginValid'); // Import validator
+const playlistSchema = require('./validators/playlistValid');
 require('dotenv').config(); // Load environment variables
 
 const init = async () => {
@@ -43,7 +48,21 @@ const init = async () => {
       validator: usersSchema,
     },
   });
-  await server.register(playlistPlugin);
+  await server.register({
+    plugin: authPlugin,
+    options: {
+      service: new AuthService(),
+      validator: loginSchema,
+    },
+  });
+
+  await server.register({
+  plugin: playlistPlugin,
+  options: {
+    service: new PlaylistsService(),
+    validator: playlistSchema,
+  },
+});
 
   // Simple root endpoint
   server.route({

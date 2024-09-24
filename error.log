@@ -164,3 +164,30 @@
 2024-09-17 21:18:29 [error]: Validation error:
 2024-09-17 21:18:50 [error]: Validation error:
 2024-09-17 21:21:42 [error]: Validation error:
+2024-09-24 11:36:04 [error]: User validation failed: Fullname is required
+2024-09-24 11:36:17 [error]: User validation failed: Email is required
+2024-09-24 11:36:32 [error]: User validation failed: Confirm password is required
+2024-09-24 11:37:06 [error]: Error adding user: Username already taken
+2024-09-24 11:37:22 [error]: Error adding user: Username already taken
+2024-09-24 11:37:25 [error]: Error adding user: Username already taken
+2024-09-24 11:37:40 [error]: Error adding user: Username already taken
+2024-09-24 11:52:34 [error]: Error adding user: Username already taken
+2024-09-24 11:53:53 [error]: Error adding user: Username already taken
+2024-09-24 11:53:57 [error]: Error adding user: Username already taken
+2024-09-24 11:54:57 [error]: Error adding user: Email already taken
+2024-09-24 11:55:31 [error]: Error adding user: Username already taken
+2024-09-24 11:56:14 [error]: Error adding user: Email already taken
+2024-09-24 12:00:12 [error]: Error adding user: Email already taken
+2024-09-24 12:00:16 [error]: Error adding user: Username already taken
+2024-09-24 12:01:23 [error]: Error adding user: Email already taken
+2024-09-24 12:03:06 [error]: Error adding user: Email already taken
+2024-09-24 12:03:40 [error]: Error adding user: Email already taken
+2024-09-24 12:05:16 [error]: Error adding user: Email already taken
+2024-09-24 12:06:02 [error]: Error adding user: Email already taken
+2024-09-24 12:06:13 [error]: Error adding user: Email already taken
+2024-09-24 12:08:08 [error]: Error adding user: Email already taken
+2024-09-24 12:09:09 [error]: Error adding user: Email already taken
+2024-09-24 12:09:32 [error]: Error adding user: Email already taken
+2024-09-24 12:09:47 [error]: Error adding user: Username already taken
+2024-09-24 12:10:08 [error]: Error adding user: Email already taken
+2024-09-24 19:16:45 [error]: Validation Error: "value" must be of type object

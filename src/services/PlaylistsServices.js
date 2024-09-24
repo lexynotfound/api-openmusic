@@ -1,4 +1,3 @@
-// src/services/PlaylistsService.js
 const db = require('./db');
 const { nanoid } = require('nanoid');
 
@@ -74,6 +73,32 @@ class PlaylistsService {
     };
 
     return playlist;
+  }
+
+  // New method to delete a playlist
+  async deletePlaylist(playlistId) {
+    const query = {
+      text: 'DELETE FROM playlists WHERE id = $1',
+      values: [playlistId],
+    };
+
+    const result = await db.query(query);
+    if (result.rowCount === 0) {
+      throw new Error('Playlist not found');
+    }
+  }
+
+  // New method to delete a song from a playlist
+  async deleteSongFromPlaylist(playlistId, songId) {
+    const query = {
+      text: 'DELETE FROM playlist_songs WHERE playlist_id = $1 AND song_id = $2',
+      values: [playlistId, songId],
+    };
+
+    const result = await db.query(query);
+    if (result.rowCount === 0) {
+      throw new Error('Song not found in the playlist');
+    }
   }
 }
 

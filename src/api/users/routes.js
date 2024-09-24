@@ -5,11 +5,11 @@ const routes = ( handler ) => [
         handler: handler.addUser
     },
     {
-        method: 'POST',
-        path: '/authentications',
-        handler: handler.login
+    method: 'GET',
+    path: '/users/{id}',
+    handler: handler.getUserById,
     }
     
 ];
 
-module.exports = routes
+module.exports = routes;
