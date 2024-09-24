@@ -2,7 +2,10 @@ const routes = ( handler ) => [
     {
         method: 'POST',
         path: '/authentications',
-        handler: handler.login
+        handler: handler.login,
+        options: {
+            auth: false,  // Disable authentication for login route
+        },
     },
     {
         method: 'PUT',

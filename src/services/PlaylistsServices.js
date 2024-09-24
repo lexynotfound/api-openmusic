@@ -1,5 +1,6 @@
 const db = require('./db');
 const { nanoid } = require('nanoid');
+const logger = require('../utils/logger');
 
 class PlaylistsService {
   async addPlaylist({ name, userId }) {
@@ -42,6 +43,47 @@ class PlaylistsService {
     }
 
     return result.rows[0].id;
+  }
+
+  // Log playlist activity (add/delete song)
+  async logActivity({ playlistId, userId, songId, action }) {
+    const id = `activity-${nanoid(16)}`;
+    const query = {
+      text: 'INSERT INTO playlist_activities (id, playlist_id, user_id, song_id, action, time) VALUES ($1, $2, $3, $4, $5, NOW())',
+      values: [id, playlistId, userId, songId, action],
+    };
+    try {
+      await db.query(query);
+      logger.info(`Activity logged: ${action} song ${songId} in playlist ${playlistId} by user ${userId}`);
+    } catch (error) {
+      logger.error(`Error logging activity for song ${songId} in playlist ${playlistId}: ${error.message}`);
+      throw error;
+    }
+  }
+
+  // Get playlist activities
+  async getActivities(playlistId) {
+    const query = {
+      text: `SELECT users.username, songs.title, playlist_activities.action, playlist_activities.time
+             FROM playlist_activities
+             JOIN users ON playlist_activities.user_id = users.id
+             JOIN songs ON playlist_activities.song_id = songs.id
+             WHERE playlist_activities.playlist_id = $1
+             ORDER BY playlist_activities.time ASC`,
+      values: [playlistId],
+    };
+    try {
+      const result = await db.query(query);
+      if (result.rows.length === 0) {
+        logger.warn(`No activities found for playlist ${playlistId}`);
+        throw new Error('No activities found for this playlist');
+      }
+      logger.info(`Retrieved activities for playlist ${playlistId}`);
+      return result.rows;
+    } catch (error) {
+      logger.error(`Error retrieving activities for playlist ${playlistId}: ${error.message}`);
+      throw error;
+    }
   }
 
   async getPlaylistSongs(playlistId) {
@@ -100,6 +142,21 @@ class PlaylistsService {
       throw new Error('Song not found in the playlist');
     }
   }
+
+  async verifyPlaylistOwner(playlistId, userId) {
+  const query = {
+    text: 'SELECT * FROM playlists WHERE id = $1 AND users_id = $2',
+    values: [playlistId, userId],
+  };
+
+  const result = await db.query(query);
+  if (result.rows.length === 0) {
+    logger.warn(`User ${userId} is not the owner of playlist ${playlistId}`);
+    throw new Error('You do not have access to this playlist');
+  }
+  logger.info(`User ${userId} verified as owner of playlist ${playlistId}`);
+}
+
 }
 
 module.exports = PlaylistsService;

@@ -9,6 +9,7 @@ class PlaylistsHandler {
     this.addPlaylist = this.addPlaylist.bind(this);
     this.getPlaylists = this.getPlaylists.bind(this);
     this.addSongToPlaylist = this.addSongToPlaylist.bind(this);
+    this.getActivities = this.getActivities.bind(this);
     this.getPlaylistSongs = this.getPlaylistSongs.bind(this);
     this.deletePlaylist = this.deletePlaylist.bind(this);
     this.deleteSongFromPlaylist = this.deleteSongFromPlaylist.bind(this);
@@ -27,6 +28,33 @@ class PlaylistsHandler {
     } catch (err) {
       logger.error(`Error adding playlist: ${err.message}`);
       return h.response({ status: 'error', message: 'Internal Server Error' }).code(500);
+    }
+  }
+  
+  async getActivities(request, h) {
+    const { id: playlistId } = request.params;
+
+    try {
+      const activities = await this._service.getActivities(playlistId);
+      return h.response({
+        status: 'success',
+        data: {
+          playlistId,
+          activities,
+        },
+      }).code(200);
+    } catch (err) {
+      logger.error(`Error retrieving activities: ${err.message}`);
+      if (err.message === 'No activities found for this playlist') {
+        return h.response({
+          status: 'fail',
+          message: 'No activities found for this playlist',
+        }).code(404);
+      }
+      return h.response({
+        status: 'error',
+        message: 'Internal Server Error',
+      }).code(500);
     }
   }
 
@@ -55,7 +83,12 @@ class PlaylistsHandler {
 
     try {
       const { playlistId } = request.params;
+      const userId = request.auth.credentials.userId;
       await this._service.addSongToPlaylist({ playlistId, songId: value.songId });
+
+      // Log the activity when a song is added
+      await this._service.logActivity({ playlistId, userId, songId: value.songId, action: 'add' });
+      
       return h.response({ status: 'success', message: 'Song added to playlist' }).code(201);
     } catch (err) {
       logger.error(`Error adding song to playlist: ${err.message}`);
@@ -99,7 +132,12 @@ class PlaylistsHandler {
 
     try {
       const { playlistId } = request.params;
+      const userId = request.auth.credentials.userId;
       await this._service.deleteSongFromPlaylist(playlistId, value.songId);
+
+      // Log the activity when a song is deleted
+      await this._service.logActivity({ playlistId, userId, songId: value.songId, action: 'delete' });
+      
       return h.response({ status: 'success', message: 'Song removed from playlist' }).code(200);
     } catch (err) {
       logger.error(`Error deleting song from playlist: ${err.message}`);
@@ -112,3 +150,4 @@ class PlaylistsHandler {
 }
 
 module.exports = PlaylistsHandler;
+

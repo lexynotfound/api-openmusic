@@ -735,3 +735,38 @@
 2024-09-24 19:16:25 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
 2024-09-24 19:16:25 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
 2024-09-24 19:16:45 [error]: Validation Error: "value" must be of type object
+2024-09-24 19:36:49 [error]: Validation Error: "value" must be of type object
+2024-09-24 19:36:55 [error]: Validation Error: "name" is required
+2024-09-24 19:37:04 [error]: Validation Error: "password" is not allowed
+2024-09-24 19:44:20 [error]: Validation Error: "value" must be of type object
+2024-09-24 19:44:24 [error]: Validation Error: "songId" is required
+2024-09-24 19:47:16 [error]: Error retrieving playlist songs: Playlist not found
+2024-09-24 19:51:34 [error]: Validation Error: "songId" is required
+2024-09-24 20:07:04 [error]: Error deleting song from playlist: Song not found in the playlist
+2024-09-24 20:07:50 [error]: Validation Error: "songId" is required
+2024-09-24 20:08:04 [error]: Error deleting song from playlist: Song not found in the playlist
+2024-09-24 20:09:14 [error]: Validation Error: "entryId" is not allowed
+2024-09-24 20:09:21 [error]: Error deleting song from playlist: Song not found in the playlist
+2024-09-24 20:09:50 [error]: Error retrieving playlist songs: Playlist not found
+2024-09-24 20:29:55 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:29:55 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:29:55 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:30:02 [info]: Login successful for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 20:30:02 [info]: Refresh token saved for user ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 20:30:02 [info]: User logged in successfully with ID: user-Yfk8VBQ2Lhnhb68S
+2024-09-24 20:32:58 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:32:58 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:32:58 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 20:39:11 [error]: Error retrieving playlist songs: Playlist not found
+2024-09-24 20:39:38 [error]: Error retrieving playlist songs: Playlist not found
+2024-09-24 20:44:58 [error]: Validation Error: "songId" is required
+2024-09-24 20:51:36 [error]: Error adding song songs-1gep5Nuh3Rvg3Zw_ to playlist playlist-rUsaar_oGvmi0R0R: null value in column "id" of relation "playlist_songs" violates not-null constraint
+2024-09-24 20:51:36 [error]: Error adding song to playlist: null value in column "id" of relation "playlist_songs" violates not-null constraint
+2024-09-24 20:55:48 [error]: Error adding song to playlist: logger is not defined
+2024-09-24 20:56:38 [error]: Error adding song to playlist: logger is not defined
+2024-09-24 20:57:14 [info]: Activity logged: add song songs-1gep5Nuh3Rvg3Zw_ in playlist playlist-rUsaar_oGvmi0R0R by user user-uLyITCR0bRTQcw6q
+2024-09-24 20:57:44 [info]: Retrieved activities for playlist playlist-rUsaar_oGvmi0R0R
+2024-09-24 21:34:24 [warn]: Login validation failed: Username is required
+2024-09-24 21:34:33 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 21:34:33 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 21:34:33 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
