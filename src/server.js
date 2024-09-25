@@ -49,8 +49,6 @@ const init = async () => {
     },
   });
 
-  // Set the default authentication strategy
-  server.auth.default('jwt');
 
   // Register other plugins
   await server.register({

@@ -770,3 +770,13 @@
 2024-09-24 21:34:33 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
 2024-09-24 21:34:33 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
 2024-09-24 21:34:33 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-24 23:39:01 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 23:39:01 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-24 23:39:01 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q
+2024-09-25 07:31:51 [info]: Received request to add album:
+2024-09-25 07:31:51 [error]: Validation error:
+2024-09-25 07:32:00 [info]: Received request to get albums
+2024-09-25 07:32:00 [info]: Fetching albums with query params:
+2024-09-25 07:32:00 [info]: Executing select query for albums:
+2024-09-25 07:32:00 [info]: Select query result:
+2024-09-25 07:32:00 [info]: Fetched 4 albums

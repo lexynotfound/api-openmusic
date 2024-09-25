@@ -211,3 +211,4 @@
 2024-09-24 20:51:36 [error]: Error adding song to playlist: null value in column "id" of relation "playlist_songs" violates not-null constraint
 2024-09-24 20:55:48 [error]: Error adding song to playlist: logger is not defined
 2024-09-24 20:56:38 [error]: Error adding song to playlist: logger is not defined
+2024-09-25 07:31:51 [error]: Validation error:
