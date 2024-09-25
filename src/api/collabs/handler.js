@@ -4,7 +4,7 @@ class CollaborationsHandler {
   constructor(collaborationService, playlistService, validator) {
     this._collaborationService = collaborationService;
     this._playlistService = playlistService;
-    this._validator = validator; // Validator containing collabSchema
+    this._validator = validator; // Validator containing collaborationSchema
 
     this.addCollaboration = this.addCollaboration.bind(this);
     this.deleteCollaboration = this.deleteCollaboration.bind(this);

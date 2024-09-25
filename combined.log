@@ -780,3 +780,6 @@
 2024-09-25 07:32:00 [info]: Executing select query for albums:
 2024-09-25 07:32:00 [info]: Select query result:
 2024-09-25 07:32:00 [info]: Fetched 4 albums
+2024-09-25 07:42:16 [info]: Login successful for user ID: user-uLyITCR0bRTQcw6q
+2024-09-25 07:42:16 [info]: Refresh token saved for user ID: user-uLyITCR0bRTQcw6q
+2024-09-25 07:42:16 [info]: User logged in successfully with ID: user-uLyITCR0bRTQcw6q

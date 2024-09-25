@@ -84,13 +84,14 @@ const init = async () => {
     },
   });
 
-  await server.register({
-    plugin: collabPlugin,  // Register the collaboration plugin
-    options: {
-      service: new CollabService(),
-      validator: collaborationSchema,  // Pass the correct schema here
-    },
-  });
+await server.register({
+  plugin: collabPlugin,  // Register the collaboration plugin
+  options: {
+    service: new CollabService(),
+    validator: { collaborationSchema: collaborationSchema.collaborationSchema },  // Pass the correct schema here
+  },
+});
+
 
 
 
